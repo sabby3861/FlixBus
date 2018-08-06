@@ -10,21 +10,95 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Home View Controller-->
+        <!--Home-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="FBHomeViewController" customModule="FlixBus" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HcQ-Hr-MHs">
+                                <rect key="frame" x="52" y="279" width="271" height="50"/>
+                                <color key="backgroundColor" white="0.73467339409722221" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="YGr-HR-nwX"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Verdana" family="Verdana" pointSize="27"/>
+                                <state key="normal" title="Arrivals">
+                                    <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                </state>
+                                <connections>
+                                    <action selector="arrivalsButtonClicked:" destination="BYZ-38-t0r" eventType="touchUpInside" id="jZo-dk-9Ws"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MVE-xQ-cBV">
+                                <rect key="frame" x="52" y="367" width="271" height="50"/>
+                                <color key="backgroundColor" white="0.73467339409722221" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="InD-H8-fEa"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Verdana" family="Verdana" pointSize="27"/>
+                                <state key="normal" title="Departures">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="departuresButtonClicked:" destination="BYZ-38-t0r" eventType="touchUpInside" id="9X9-mw-LLp"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="HcQ-Hr-MHs" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="52" id="34A-OJ-WIA"/>
+                            <constraint firstItem="MVE-xQ-cBV" firstAttribute="top" secondItem="HcQ-Hr-MHs" secondAttribute="bottom" constant="38" id="3t2-LO-4yM"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="HcQ-Hr-MHs" secondAttribute="trailing" constant="52" id="7Lp-1t-h6x"/>
+                            <constraint firstItem="MVE-xQ-cBV" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="52" id="MCR-zp-3KO"/>
+                            <constraint firstItem="HcQ-Hr-MHs" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="215" id="Xau-9R-s0y"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="MVE-xQ-cBV" secondAttribute="trailing" constant="52" id="oYg-BY-G1E"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
-                    <navigationItem key="navigationItem" id="HKP-HX-TZI"/>
+                    <navigationItem key="navigationItem" title="Home" id="aZZ-3v-Odd"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1076" y="132.68365817091455"/>
+            <point key="canvasLocation" x="964" y="791"/>
+        </scene>
+        <!--FBBusInfoViewController-->
+        <scene sceneID="UBd-eH-xxx">
+            <objects>
+                <viewController storyboardIdentifier="FBBusInfoViewController" title="FBBusInfoViewController" id="zWO-yw-WVZ" customClass="FBBusInfoViewController" customModule="FlixBus" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="50J-nN-1pS">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="b92-AA-DVc" customClass="FBTableView" customModule="FlixBus" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="zWO-yw-WVZ" id="jVh-Oy-jJb"/>
+                                    <outlet property="delegate" destination="zWO-yw-WVZ" id="jWZ-5y-f0y"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="b92-AA-DVc" firstAttribute="leading" secondItem="l7E-ZS-gpW" secondAttribute="leading" id="9K3-2n-3ql"/>
+                            <constraint firstItem="b92-AA-DVc" firstAttribute="bottom" secondItem="l7E-ZS-gpW" secondAttribute="bottom" id="PnN-QV-LDu"/>
+                            <constraint firstItem="b92-AA-DVc" firstAttribute="top" secondItem="l7E-ZS-gpW" secondAttribute="top" id="k5r-hM-qcQ"/>
+                            <constraint firstItem="b92-AA-DVc" firstAttribute="trailing" secondItem="l7E-ZS-gpW" secondAttribute="trailing" id="yK4-Ms-Q9c"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="l7E-ZS-gpW"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Title" id="eFi-MR-RG9"/>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+                    <connections>
+                        <outlet property="tableView" destination="b92-AA-DVc" id="AWj-7l-5E2"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="uzQ-MM-Zgi" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1626.4000000000001" y="791.15442278860576"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="DO5-fz-enl">

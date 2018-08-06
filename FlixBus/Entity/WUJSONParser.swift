@@ -2,7 +2,7 @@
 //  WUJSONParser.swift
 //  Wunder
 //
-//  Created by sanjay on 04/08/18.
+//  Created by sanjay on 06/08/18.
 //  Copyright © 2018 sanjay. All rights reserved.
 //
 
@@ -17,7 +17,6 @@ enum APIError: Error {
     }
   }
 }
-// return .failure(APIError.message(errorMessage))
 
 let baseUrl = "http://api.mobile.staging.mfb.io/mobile/v1/network/station/1/timetable"
 struct JSONParser<Model> {
@@ -64,8 +63,8 @@ extension JSONParser {
       self.request.setValue(value, forHTTPHeaderField: key)
     }
     self.parse = { data in
-      let json = try JSONSerialization.jsonObject(with: data, options: [])
-      print("Json is \(json)")
+      //let json = try JSONSerialization.jsonObject(with: data, options: [])
+      //print("Json is \(json)")
       return try parseJSON(data)
     }
   }
@@ -100,21 +99,28 @@ struct FBBusInfo : Codable {
 }
 
 
-/// Placemarks info
+/// Bus Time Table info
 struct FBTimeTable : Codable {
-  let arrivals: [FBArrival]
+  let arrivals: [FBArrivalDeparture]
+  let departures: [FBArrivalDeparture]
 }
 
-struct FBArrival : Codable {
+
+/// Bus Arrival and Departure Info
+struct FBArrivalDeparture : Codable {
   let station: String
   let datetime: FBDateTime
   let linedirection: String
   let route: [FBRoute]
+  let lineCode: String
+  let direction: String
   enum CodingKeys: String, CodingKey {
     case station = "through_the_stations"
     case datetime = "datetime"
     case linedirection = "line_direction"
     case route = "route"
+    case lineCode = "line_code"
+    case direction = "direction"
   }
   
   struct FBDateTime : Codable {
@@ -123,16 +129,21 @@ struct FBArrival : Codable {
   }
 }
 
+
+/// Bus Route Info
 struct FBRoute : Codable {
   let id: Int
   let name: String
   let defaultAddress: FBAddress
+  let address: String
   enum CodingKeys: String, CodingKey {
     case id = "id"
     case name = "name"
     case defaultAddress = "default_address"
+    case address = "address"
   }
   
+  /// Address Info
   struct FBAddress : Codable {
     let address: String
     let fulladdress: String
@@ -144,6 +155,7 @@ struct FBRoute : Codable {
     }
   }
   
+  /// Coordinate Info
   struct FBCoordinate : Codable {
     var latitude: Double
     var longitude: Double
@@ -154,54 +166,3 @@ struct FBRoute : Codable {
   }
   
 }
-
-protocol PayLoadFormat {
-  func formatGetPayload()
-}
-extension PayLoadFormat{
-  func formatGetPayload() {
-    var payload = FBHTTPPayload(payloadType: .RequestMethodGET)
-    payload.addHeader(name: FBHTTPHeaderType.contentType.rawValue, value: FBHTTPMimeType.applicationJSON.rawValue)
-    payload.addHeader(name: FBHTTPHeaderType.authentication.rawValue, value: FBHTTPMimeType.key.rawValue)
-    ServiceManager.payload = payload
-  }
-}
-
-struct FBHTTPPayload {
-  var type: FBHTTPPayloadType!
-  var headers = Dictionary<String, String>()
-  
-  init(payloadType: FBHTTPPayloadType) {
-    self.type = payloadType
-  }
-  mutating func addHeader(name: String, value: String) {
-    headers[name] = value
-  }
-  
-}
-
-enum FBHTTPMimeType: String {
-  case applicationJSON = "application/json; charset=utf-8"
-  case key = "intervIEW_TOK3n"
-}
-enum FBHTTPHeaderType: String{
-  case authentication  = "X-Api-Authentication"
-  case contentType    = "Content-Type"
-}
-
-enum FBHTTPMethod: String {
-  case get
-}
-
-enum FBHTTPPayloadType{
-  case RequestMethodGET
-  func httpMethod() -> String {
-    switch self{
-    case .RequestMethodGET: return FBHTTPMethod.get.rawValue
-    }
-  }
-}
-struct ServiceManager {
-  static var payload: FBHTTPPayload?
-}
-

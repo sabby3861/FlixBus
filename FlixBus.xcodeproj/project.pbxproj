@@ -14,6 +14,17 @@
 		9245442F21188E13004BBD15 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9245442D21188E13004BBD15 /* LaunchScreen.storyboard */; };
 		9245443A21188E13004BBD15 /* FlixBusTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9245443921188E13004BBD15 /* FlixBusTests.swift */; };
 		92EC64202118932C00A5E988 /* WUJSONParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92EC641F2118932C00A5E988 /* WUJSONParser.swift */; };
+		92EC64222118B43500A5E988 /* FBPayLoadHeaders.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92EC64212118B43500A5E988 /* FBPayLoadHeaders.swift */; };
+		92EC64242118B8AA00A5E988 /* FBBusInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92EC64232118B8AA00A5E988 /* FBBusInfoViewController.swift */; };
+		92EC64262118B9DB00A5E988 /* FBHomeProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92EC64252118B9DB00A5E988 /* FBHomeProtocols.swift */; };
+		92EC64282118B9FB00A5E988 /* FBHomePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92EC64272118B9FB00A5E988 /* FBHomePresenter.swift */; };
+		92EC642A2118BA0800A5E988 /* FBHomeInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92EC64292118BA0700A5E988 /* FBHomeInteractor.swift */; };
+		92EC642C2118BA1400A5E988 /* FBHomeRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92EC642B2118BA1400A5E988 /* FBHomeRouter.swift */; };
+		92EC642F2118BE7800A5E988 /* FBAlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92EC642D2118BE7700A5E988 /* FBAlertViewController.swift */; };
+		92EC64302118BE7800A5E988 /* FBStoryBoard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92EC642E2118BE7800A5E988 /* FBStoryBoard.swift */; };
+		92EC64322118BF6100A5E988 /* FBTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92EC64312118BF6000A5E988 /* FBTableView.swift */; };
+		92EC64362118C01500A5E988 /* FBBusInfoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 92EC64342118C01400A5E988 /* FBBusInfoCell.xib */; };
+		92EC64372118C01500A5E988 /* FBBusInfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92EC64352118C01400A5E988 /* FBBusInfoCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,6 +49,17 @@
 		9245443921188E13004BBD15 /* FlixBusTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlixBusTests.swift; sourceTree = "<group>"; };
 		9245443B21188E13004BBD15 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		92EC641F2118932C00A5E988 /* WUJSONParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WUJSONParser.swift; sourceTree = "<group>"; };
+		92EC64212118B43500A5E988 /* FBPayLoadHeaders.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FBPayLoadHeaders.swift; sourceTree = "<group>"; };
+		92EC64232118B8AA00A5E988 /* FBBusInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FBBusInfoViewController.swift; sourceTree = "<group>"; };
+		92EC64252118B9DB00A5E988 /* FBHomeProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FBHomeProtocols.swift; sourceTree = "<group>"; };
+		92EC64272118B9FB00A5E988 /* FBHomePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FBHomePresenter.swift; sourceTree = "<group>"; };
+		92EC64292118BA0700A5E988 /* FBHomeInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FBHomeInteractor.swift; sourceTree = "<group>"; };
+		92EC642B2118BA1400A5E988 /* FBHomeRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FBHomeRouter.swift; sourceTree = "<group>"; };
+		92EC642D2118BE7700A5E988 /* FBAlertViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FBAlertViewController.swift; sourceTree = "<group>"; };
+		92EC642E2118BE7800A5E988 /* FBStoryBoard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FBStoryBoard.swift; sourceTree = "<group>"; };
+		92EC64312118BF6000A5E988 /* FBTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FBTableView.swift; sourceTree = "<group>"; };
+		92EC64342118C01400A5E988 /* FBBusInfoCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FBBusInfoCell.xib; sourceTree = "<group>"; };
+		92EC64352118C01400A5E988 /* FBBusInfoCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FBBusInfoCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,7 +102,16 @@
 			isa = PBXGroup;
 			children = (
 				9245442421188E10004BBD15 /* AppDelegate.swift */,
+				92EC642D2118BE7700A5E988 /* FBAlertViewController.swift */,
+				92EC642E2118BE7800A5E988 /* FBStoryBoard.swift */,
+				92EC64312118BF6000A5E988 /* FBTableView.swift */,
 				9245442621188E10004BBD15 /* FBHomeViewController.swift */,
+				92EC64252118B9DB00A5E988 /* FBHomeProtocols.swift */,
+				92EC64272118B9FB00A5E988 /* FBHomePresenter.swift */,
+				92EC64292118BA0700A5E988 /* FBHomeInteractor.swift */,
+				92EC642B2118BA1400A5E988 /* FBHomeRouter.swift */,
+				92EC64232118B8AA00A5E988 /* FBBusInfoViewController.swift */,
+				92EC64332118C01400A5E988 /* Cell */,
 				92EC641E2118932C00A5E988 /* Entity */,
 				9245442821188E10004BBD15 /* Main.storyboard */,
 				9245442B21188E13004BBD15 /* Assets.xcassets */,
@@ -103,8 +134,18 @@
 			isa = PBXGroup;
 			children = (
 				92EC641F2118932C00A5E988 /* WUJSONParser.swift */,
+				92EC64212118B43500A5E988 /* FBPayLoadHeaders.swift */,
 			);
 			path = Entity;
+			sourceTree = "<group>";
+		};
+		92EC64332118C01400A5E988 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				92EC64342118C01400A5E988 /* FBBusInfoCell.xib */,
+				92EC64352118C01400A5E988 /* FBBusInfoCell.swift */,
+			);
+			path = Cell;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -188,6 +229,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				92EC64362118C01500A5E988 /* FBBusInfoCell.xib in Resources */,
 				9245442F21188E13004BBD15 /* LaunchScreen.storyboard in Resources */,
 				9245442C21188E13004BBD15 /* Assets.xcassets in Resources */,
 				9245442A21188E10004BBD15 /* Main.storyboard in Resources */,
@@ -208,9 +250,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				92EC64302118BE7800A5E988 /* FBStoryBoard.swift in Sources */,
+				92EC64282118B9FB00A5E988 /* FBHomePresenter.swift in Sources */,
 				92EC64202118932C00A5E988 /* WUJSONParser.swift in Sources */,
 				9245442721188E10004BBD15 /* FBHomeViewController.swift in Sources */,
 				9245442521188E10004BBD15 /* AppDelegate.swift in Sources */,
+				92EC64372118C01500A5E988 /* FBBusInfoCell.swift in Sources */,
+				92EC64222118B43500A5E988 /* FBPayLoadHeaders.swift in Sources */,
+				92EC642A2118BA0800A5E988 /* FBHomeInteractor.swift in Sources */,
+				92EC64322118BF6100A5E988 /* FBTableView.swift in Sources */,
+				92EC64262118B9DB00A5E988 /* FBHomeProtocols.swift in Sources */,
+				92EC64242118B8AA00A5E988 /* FBBusInfoViewController.swift in Sources */,
+				92EC642C2118BA1400A5E988 /* FBHomeRouter.swift in Sources */,
+				92EC642F2118BE7800A5E988 /* FBAlertViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
