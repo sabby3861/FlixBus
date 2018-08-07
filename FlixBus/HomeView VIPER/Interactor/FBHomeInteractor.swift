@@ -12,8 +12,8 @@ class FBHomeInteractor: FBHomeInteractorProtocol {
   
   func decodeJSONInformation(){
     let parser = WUJSONParser()
-    let service = WUCarInfo()
-    parser.request(resource: service.carInfoService) { [unowned self] result in
+    let service = WUBusInfoParser()
+    parser.request(resource: service.busInfoService) { [unowned self] result in
       //print("Result Is \(result)")
       switch result {
       case .success(let data):
@@ -26,4 +26,5 @@ class FBHomeInteractor: FBHomeInteractorProtocol {
       }
     }
   }
+  
 }

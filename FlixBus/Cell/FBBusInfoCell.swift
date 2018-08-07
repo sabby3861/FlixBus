@@ -8,10 +8,12 @@
 
 import UIKit
 @IBDesignable
-class FBBusInfoCell: UITableViewCell {
+class FBBusInfoCell: UITableViewCell, FBTimeManagement {
+  
   @IBOutlet weak var timeLabel: UILabel!
   @IBOutlet weak var directionLabel: UILabel!
   @IBOutlet weak var routeLabel: UILabel!
+  var dateFormat: String?
   
   override func awakeFromNib() {
     super.awakeFromNib()
@@ -26,20 +28,12 @@ class FBBusInfoCell: UITableViewCell {
   ///
   /// - Parameter data: WUPlaceMark containing all info
   func displayData(data: FBArrivalDeparture) {
+    self.dateFormat = "HH:mm"
     timeLabel.text = getDate(timeStamp: data.datetime.timestamp, timeZone: data.datetime.tz)
     directionLabel.text = data.direction
     routeLabel.text = data.station
   }
   
-  func getDate(timeStamp: Int, timeZone: String) -> String {
-    let date = Date(timeIntervalSince1970: TimeInterval(timeStamp))
-    let dateFormatter = DateFormatter()
-    dateFormatter.timeZone = TimeZone(abbreviation: timeZone) //Set timezone that you want
-    dateFormatter.locale = NSLocale.current
-    dateFormatter.dateFormat = "HH:mm" //Specify your format that you want
-    let time = dateFormatter.string(from: date)
-    return time
-  }
   @IBInspectable var cornerRadius: CGFloat = 0 {
     didSet {
       layer.cornerRadius = cornerRadius
@@ -50,5 +44,21 @@ class FBBusInfoCell: UITableViewCell {
     didSet {
       layer.borderWidth = borderWidth
     }
+  }
+}
+
+protocol FBTimeManagement {
+  func getDate(timeStamp: Int, timeZone: String) -> String
+  var dateFormat: String? { get set }
+}
+extension FBTimeManagement{
+  func getDate(timeStamp: Int, timeZone: String) -> String {
+    let date = Date(timeIntervalSince1970: TimeInterval(timeStamp))
+    let dateFormatter = DateFormatter()
+    dateFormatter.timeZone = TimeZone(abbreviation: timeZone) //Set timezone that you want
+    dateFormatter.locale = NSLocale.current
+    dateFormatter.dateFormat = dateFormat//"HH:mm" //Specify your format that you want
+    let time = dateFormatter.string(from: date)
+    return time
   }
 }

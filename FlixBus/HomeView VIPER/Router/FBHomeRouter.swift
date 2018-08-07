@@ -7,8 +7,10 @@
 //
 
 import Foundation
+import UIKit
 
 class FBHomeRouter: FBHomeRouterProtocol {
+  var viewController: FBHomeViewController?
   static func assembleModule(view: FBHomeViewController){
     let presenter = FBHomePresenter()
     let router = FBHomeRouter()
@@ -19,6 +21,13 @@ class FBHomeRouter: FBHomeRouterProtocol {
     
     interactor.output = presenter
     view.presenter = presenter
-    //router.viewController = view
+    router.viewController = view
+  }
+  
+  func showBusInfoView(busInfo: [FBArrivalDeparture]){
+    let storyboard = UIStoryboard.storyboard(storyboard: .Main)
+    let view: FBBusInfoViewController = storyboard.instantiateVieController()
+    view.data = busInfo
+    viewController?.navigationController?.pushViewController(view, animated: true)
   }
 }

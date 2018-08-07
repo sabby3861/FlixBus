@@ -15,7 +15,9 @@ class FBHomePresenter: FBHomePresenterProtocol {
   func fetchBusInformation(){
     interactor?.decodeJSONInformation()
   }
-  
+  func sendDataToBusInfoView(busInfo: [FBArrivalDeparture]){
+    router?.showBusInfoView(busInfo: busInfo)
+  }
 }
 
 
@@ -24,5 +26,8 @@ extension FBHomePresenter: FBHomeOutputProtocol{
   
   func busInfoDidFetch(busInfo: FBTimeTable){
     view?.showBusInformation(with: busInfo)
+  }
+  func errorOccured(){
+    
   }
 }

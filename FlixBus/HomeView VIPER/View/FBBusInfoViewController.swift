@@ -8,15 +8,27 @@
 
 import UIKit
 
-class FBBusInfoViewController: UIViewController {
+class FBBusInfoViewController: UIViewController, FBTimeManagement {
   
   @IBOutlet weak var tableView: FBTableView!
   var data: [FBArrivalDeparture]?
+  var groupData: [Int : [FBArrivalDeparture]]?
+  var values: [[FBArrivalDeparture]]?
+  var keys: [Int]?
+  var sectionArray = [NSString]()
+  var dateFormat: String?
+  
   override func viewDidLoad() {
     super.viewDidLoad()
     // Do any additional setup after loading the view.
-    tableView.addCellIdentifiers(["FBBusInfoCell"])
+    groupData = Dictionary(grouping: data!, by: { $0.datetime.timestamp } )
+    // Create Array of the Values for cell
+    values = Array(groupData!.values)
+    // Create section keys array
+    keys = Array(groupData!.keys)
     
+    tableView.addCellIdentifiers(["FBBusInfoCell"])
+    self.title = data?.first?.direction
   }
   
   override func didReceiveMemoryWarning() {
@@ -42,12 +54,20 @@ class FBBusInfoViewController: UIViewController {
 // MARK: - Extension for TableView DataSource
 extension FBBusInfoViewController: UITableViewDataSource{
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    return data!.count
+    return values![section].count
+  }
+  
+  func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+    let data = values![section].first
+    self.dateFormat = "dd/mm/yy"
+    let title = getDate(timeStamp: (data?.datetime.timestamp)!, timeZone: (data?.datetime.tz)!)
+    return "   \(title)"
   }
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     
     let cell = tableView.dequeueReusableCell(withIdentifier: "FBBusInfoCell", for: indexPath) as! FBBusInfoCell
-    cell.displayData(data: data![indexPath.row])
+    let value = values![indexPath.section]
+    cell.displayData(data: value[indexPath.row])
     return cell
   }
 }
@@ -61,5 +81,9 @@ extension FBBusInfoViewController: UITableViewDelegate{
   func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat{
     return UITableViewAutomaticDimension
   }
+  func numberOfSections(in tableView: UITableView) -> Int {
+    return (groupData?.keys.count)!
+  }
 }
+
 

@@ -70,8 +70,8 @@ extension JSONParser {
   }
 }
 
-struct WUCarInfo {
-  let carInfoService = JSONParser<FBBusInfo>(url: ServiceURL.CarService, parseJSON: { json in
+struct WUBusInfoParser {
+  let busInfoService = JSONParser<FBBusInfo>(url: ServiceURL.CarService, parseJSON: { json in
     guard let data = json as? Data else {
       throw APIError.message("Unable to deconde the response")
     }
